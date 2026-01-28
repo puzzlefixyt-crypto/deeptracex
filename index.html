@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeepTraceX - Professional OSINT Platform</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Authentication Popup -->
+<div id="authPopup" class="auth-overlay">
+  <div class="auth-modal">
+    <div class="auth-header">
+      <div class="auth-logo">🔍</div>
+      <h2 id="authTitle">Welcome to DeepTraceX</h2>
+      <p id="authSubtitle">Enter a username to access the panel</p>
+    </div>
+    
+    <div class="auth-body">
+      <input 
+        type="text" 
+        id="authUsername" 
+        placeholder="Enter your username"
+        maxlength="20"
+        autocomplete="off"
+      >
+      <div id="authError" class="auth-error"></div>
+      
+      <!-- Telegram Verification Box (Hidden by default) -->
+      <div id="telegramBox" class="telegram-box" style="display: none;">
+        <div class="telegram-header">
+          <span class="telegram-icon">✈️</span>
+          <h3>Telegram Verification Required</h3>
+        </div>
+        <div class="telegram-body">
+          <p class="telegram-instruction">Open our Telegram bot and send:</p>
+          <div class="telegram-code-box">
+            <code>/start <span id="tgBindCode" class="bind-code">------</span></code>
+            <button class="copy-btn" onclick="copyBindCode()">
+              <span class="copy-icon">📋</span>
+            </button>
+          </div>
+          <p class="telegram-hint">
+            This permanently links your account to your Telegram ID for maximum security.
+          </p>
+          <a href="https://t.me/DeepTraceXWeb_bot" target="_blank" class="telegram-open-btn">
+            <span>Open Telegram Bot</span>
+            <span class="arrow">→</span>
+          </a>
+          <div class="telegram-waiting">
+            <div class="waiting-spinner"></div>
+            <p>Waiting for verification...</p>
+          </div>
+        </div>
+      </div>
+      
+      <button id="authButton" onclick="handleAuth()">
+        <span class="btn-text">Continue</span>
+        <span class="btn-loader"></span>
+      </button>
+    </div>
+    
+    <div class="auth-footer">
+      <p>Professional OSINT Lookup System</p>
+      <p class="powered-line">
+        Designed & Powered by 
+        <a href="https://t.me/imvrct" target="_blank">@imvrct</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Main Panel -->
+<div class="panel" id="mainPanel" style="display: none;">
+  
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <span class="top-bar-icon">👤</span>
+      <span id="topUsername" class="top-bar-username">User</span>
+    </div>
+    <div class="top-bar-right">
+      <div class="credits-display">
+        <span class="credit-icon">⚡</span>
+        <span id="topCredits" class="credit-count">0</span>
+      </div>
+      <button class="logout-btn" onclick="handleLogout()">
+        <span>Logout</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <div class="header-section">
+    <h1>DeepTraceX</h1>
+    <p class="tagline">Professional OSINT Lookup Panel</p>
+  </div>
+
+  <!-- Form Section -->
+  <div class="form-section">
+    <select id="type" onchange="setExample()">
+      <option value="">Select Lookup Type</option>
+      <option value="num">Mobile Number</option>
+      <option value="aadhaar">Aadhaar</option>
+      <option value="gst">GST</option>
+      <option value="ifsc">IFSC</option>
+      <option value="upi">UPI</option>
+      <option value="fam">FAM</option>
+      <option value="vehicle">Vehicle</option>
+    </select>
+
+    <input id="input" placeholder="Select lookup type first" disabled>
+
+    <button onclick="lookup()">
+      <span class="btn-text">RUN TRACE</span>
+      <span class="btn-loader"></span>
+    </button>
+  </div>
+
+  <!-- Result Section -->
+  <div id="result"></div>
+
+  <!-- Footer Section -->
+  <div class="footer-section">
+    <p>Powered by <a href="https://t.me/imvrct" target="_blank">@imvrct</a></p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
