@@ -9,6 +9,18 @@ import random
 from threading import Thread
 import telebot
 
+import os
+from pymongo import MongoClient
+
+MONGO_URI = os.getenv("MONGO_URI")
+client = MongoClient(MONGO_URI)
+
+db = client["deeptracex"]
+users_col = db["users"]
+history_col = db["history"]
+banned_col = db["banned"]
+
+
 app = Flask(__name__)
 
 # ================= CONFIG =================
