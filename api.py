@@ -499,11 +499,11 @@ def num():
             </div>
             <div class="result-row">
                 <div class="result-label"><span class="icon">👨</span>Father Name</div>
-                <div class="result-value">{d.get("fname", "N/A")}</div>
+                <div class="result-value">{d.get("father_name", "N/A")}</div>
             </div>
             <div class="result-row">
                 <div class="result-label"><span class="icon">☎️</span>Alternate No</div>
-                <div class="result-value">{d.get("alt", "N/A")}</div>
+                <div class="result-value">{d.get("alt_mobile", "N/A")}</div>
             </div>
             <div class="result-row">
                 <div class="result-label"><span class="icon">🗼</span>Operator</div>
@@ -511,7 +511,7 @@ def num():
             </div>
             <div class="result-row">
                 <div class="result-label"><span class="icon">🆔</span>Aadhaar ID</div>
-                <div class="result-value">{d.get("id", "N/A")}</div>
+                <div class="result-value">{d.get("id_number", "N/A")}</div>
             </div>
             <div class="result-row">
                 <div class="result-label"><span class="icon">✉️</span>Email</div>
