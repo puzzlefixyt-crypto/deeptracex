@@ -478,7 +478,7 @@ def num():
     except:
         return error_html("Temporary service issue. Please retry in a moment.")
 
-    data = r.get("data", {}).get("results", [])
+    data = r.get("data", [])
     if not data:
         return error_html("No matching records found in available databases.")
         
